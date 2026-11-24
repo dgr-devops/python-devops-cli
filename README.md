@@ -387,6 +387,20 @@ pytest --cov                 # tests con cobertura (falla por debajo del 80 %)
 - La CI ([.github/workflows/ci.yml](.github/workflows/ci.yml)) ejecuta ruff y pytest con
   cobertura en Python 3.11, 3.12 y 3.13.
 
+### Estado de verificación
+
+Ejecutado de verdad:
+
+- `ruff check` y `ruff format --check`: limpios (local y en CI).
+- `pytest --cov`: 219 tests, cobertura ~99 % (local, Python 3.14).
+- CI en GitHub Actions: en verde con Python 3.11, 3.12 y 3.13 (lint + tests + `devops-cli --version`).
+- Instalación con `pip install .` en un entorno virtual limpio.
+- Salida de los ejemplos del README capturada en una máquina Linux real.
+
+Sin verificar: macOS y sistemas sin `/proc` (en ellos `disk` solo funciona con `--path`),
+logs de Apache con vhost o formatos personalizados, y ejecución como plugin NRPE en un
+Nagios real (los ejemplos de integración no se han probado contra un servidor de monitorización).
+
 Estructura:
 
 ```
